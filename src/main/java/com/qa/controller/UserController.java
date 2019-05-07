@@ -4,10 +4,14 @@ import java.util.List;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.qa.model.User;
@@ -49,6 +53,18 @@ public class UserController {
 		userRepository.delete(existingNote);
         return existingNote;
     }
+	
+	@RequestMapping(value = "users/login", method = RequestMethod.GET)
+	public ResponseEntity<User> getLogin(@RequestParam String username, @RequestParam String password)
+	{
+		for(User user : userRepository.findAll()) {
+			if(user.getPassword().equals(password) && user.getUser().equals(username))
+			{
+				return ResponseEntity.status(HttpStatus.OK).body(user);
+			}
+		}
+		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+	}
 	
 	@Autowired
 	private UserRepository userRepository;
