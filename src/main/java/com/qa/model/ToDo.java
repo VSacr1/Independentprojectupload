@@ -23,7 +23,7 @@ public class ToDo {
 		
 		private String item; 
 
-		private String dateSet; 
+		private String completedBy; 
 		
 		private boolean isComplete; 
 		
@@ -35,11 +35,11 @@ public class ToDo {
 			
 		}
 
-		public ToDo(String item, boolean isComplete, String dateSet)
+		public ToDo(String item, boolean isComplete, String completedBy)
 		{
 			this.item = item; 
 			this.isComplete = isComplete; 
-			this.dateSet = dateSet; 
+			this.completedBy = completedBy; 
 			
 			
 		}
@@ -69,11 +69,11 @@ public class ToDo {
 		}
 		
 		public String getDateSet() {
-			return dateSet;
+			return completedBy;
 		}
 
-		public void setDateSet(String dateSet) {
-			this.dateSet = dateSet;
+		public void setDateSet(String completedBy) {
+			this.completedBy = completedBy;
 		}
 		
 //		public Set<User> getUser()

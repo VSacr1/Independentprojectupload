@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.qa.model.ToDo;
 import com.qa.model.User;
 import com.qa.repository.UserRepository;;
 
@@ -61,9 +62,11 @@ public class UserController {
 			if(user.getPassword().equals(password) && user.getUser().equals(username))
 			{
 				return ResponseEntity.status(HttpStatus.OK).body(user);
+				
+				//Creating a new list for each user
 			}
 		}
-		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+		return ResponseEntity.status(HttpStatus.OK).body(null);
 	}
 	
 	@Autowired
