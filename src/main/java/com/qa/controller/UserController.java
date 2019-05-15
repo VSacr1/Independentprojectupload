@@ -21,12 +21,6 @@ import com.qa.repository.UserRepository;;
 @RestController
 @RequestMapping("api/v1/")
 public class UserController {
-
-	// @RequestMapping(value = "users", method = RequestMethod.GET)
-    // public List<User> list(){
-    //     return userRepository.findAll();
-    // }
-
 	
 	@RequestMapping(value = "users", method = RequestMethod.POST)
     public User create(@RequestBody User user){
